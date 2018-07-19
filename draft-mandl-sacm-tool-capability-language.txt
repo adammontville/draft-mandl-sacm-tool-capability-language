@@ -1,0 +1,336 @@
+
+
+
+
+SACM Working Group                                          A. Montville
+Internet-Draft                                               P. Langlois
+Intended status: Informational                                       CIS
+Expires: January 20, 2019                                  July 19, 2018
+
+
+  Security Automation and Continuous Monitoring (SACM) Tool Capability
+                                Language
+            draft-mandl-sacm-tool-capability-language-latest
+
+Abstract
+
+   The MILE working group has adopted and continues work on
+   [I-D.ietf-mile-xmpp-grid] as a transfer protocol for security-
+   relevant information between network-connected devices.  SACM would
+   like to make use of [I-D.ietf-mile-xmpp-grid] as a transfer mechanism
+   for security-relevant information beyond IODEF, and thus requires a
+   taxonomy of semantically appropriate topics with contextually
+   appropriate capabilities.  This draft seeks to define this taxonomy.
+
+   WORKING GROUP: The source for this draft is maintained in GitHub.
+   Suggested changes should be submitted as pull requests at
+   https://github.com/adammontville/ietf-mandl-sacm-tool-capability-
+   language/.  Instructions are on that page as well.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at http://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on January 20, 2019.
+
+Copyright Notice
+
+   Copyright (c) 2018 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+
+
+
+
+Montville & Langlois    Expires January 20, 2019                [Page 1]
+
+Internet-Draft                  SACM TCL                       July 2018
+
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (http://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
+Table of Contents
+
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   2.  Terms and Definitions . . . . . . . . . . . . . . . . . . . .   3
+   3.  What Not How  . . . . . . . . . . . . . . . . . . . . . . . .   3
+   4.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
+   5.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
+   6.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   5
+   7.  Change Log  . . . . . . . . . . . . . . . . . . . . . . . . .   5
+   8.  Contributors  . . . . . . . . . . . . . . . . . . . . . . . .   5
+   9.  Informative References  . . . . . . . . . . . . . . . . . . .   5
+   Appendix A.  The Attic  . . . . . . . . . . . . . . . . . . . . .   5
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   5
+
+1.  Introduction
+
+   For the defenders supporting and protecting networks, the deluge of
+   data, alerts, best practices, notices and regulations can overwhelm
+   even the hardiest of us.  Fortunately for the defenders the tools
+   they use have evolved in maturity, functionality and
+   interoperability, however, understanding the specific capability of
+   the tools and how they help you achieve certain regulations or best
+   practices still presents a challenge.  Does your vulnerability
+   management platform, also count as your organization's asset
+   inventory?  Does your Active Asset Inventory tool also help you
+   create your list of active ports and services?  Does your
+   implementation of opensource tools meet the same functional
+   capabilities of an enterprise grade tool?  What additional value does
+   [insert new marketing buzzword] provide to protecting your
+   organization?
+
+   One way that we can attempt to address these types of questions is
+   through the development of a standardized language to describe
+   cybersecurity tooling capability.  We have standardized languages for
+   describing software vulnerability (CWE, CVE), standardized languages
+   to describe platforms and software (CPE) and also some growing
+   standardization for understanding attacker methodology and campaigns
+   (STIX, ATT&CK).  While the task may seem insurmountable: there are so
+
+
+
+Montville & Langlois    Expires January 20, 2019                [Page 2]
+
+Internet-Draft                  SACM TCL                       July 2018
+
+
+   many tools that address problems in unique different way.  However,
+   if the focus is not on HOW the tool functions, but on WHAT the tools
+   does, the scope starts to narrow down drastically.  With this
+   approach we could start to whittle down the large corpus of tooling
+   descriptions and distill them into a more manageable classes of
+   capabilities.
+
+   By having a standardized approach to describing capabilities we could
+   theoretically make direct connections between security tooling,
+   security requirements and risks.
+
+2.  Terms and Definitions
+
+   TBD
+
+3.  What Not How
+
+   The key to this puzzle is to distinguish the what from the how, where
+   the what is the action or activity that the tool is implementing/
+   completing.  For this exercise we referenced the [CISControls] as a
+   good starting point to describe the specific capability that is
+   required for the sub-control to be implemented.  While going through
+   the process a pattern was discovered, many of the sub-controls had a
+   relatively consistent structure, with one of a handful of actions
+   being applied to different subjects, listed as follows:
+
+   o  Parse: read and interpret different files and data into an
+      consistent format
+
+   o  Scan: Examine parts of something to detect specific feature
+
+   o  Store: Write values and data into a queryable format
+
+   o  Block: Prevent a specific event from occurring
+
+   o  Identify: Uniquely represent data points based on a specific
+      premise or criteria
+
+   o  Authenticate: Verify something's identity based on a specific
+      criteria
+
+   o  Patch: To mend a weakness or vulnerability
+
+   o  Rate: assign a standard or value to something according to a
+      particular scale
+
+   o  Verify: Demonstrate the accuracy of assumptions
+
+
+
+
+Montville & Langlois    Expires January 20, 2019                [Page 3]
+
+Internet-Draft                  SACM TCL                       July 2018
+
+
+   o  Log: make a recording of specific events
+
+   o  Set: Turn on a setting or add a value to the system
+
+   o  Encrypt: convert plaintext information into ciphertext to prevent
+      unauthorized access
+
+   Below is an example of how these action terms can be used:
+
+   o  Scan the network for live assets,
+
+   o  Scan assets for deviations to baseline,
+
+   o  Scan assets for known malicious file hashes,
+
+   o  Block from the network assets w/o legitimate certificates
+
+   o  Block from executing unapproved applications
+
+   o  Block from connecting unapproved connections.
+
+   In these extremely simple examples, we're looking at capabilities
+   being described as the relationship between an Action (the what, in
+   bold) and the Subject (to what, in orange).  The subject allows us to
+   understand where the action is being applied and within which
+   context.  For example are we scanning the network for live assets, or
+   are we scanning for known out-dated software?  The problem then
+   becomes, what ultimately describes the subject.  This is where there
+   is a significant gap in my opinion.  Ideally a standardized language
+   of system subjects would allow for the capturing of relationships
+   between subjects (a Filesystem is on a system, a network consists of
+   different systems, applications can be distributed across different
+   systems).  The relationships would be key to understanding how
+   specific capabilities tie back to different elements of the
+   environment and how those protections roll up (or don't) in the
+   environment.
+
+   However, in the imperfect world of technology I believe we need to
+   introduce one additional piece, the "Scope".  As much as we'd like to
+   say that our capability would be applied universally across our
+   environment it may only be available to certain platforms, to systems
+   that are domain joined, or to systems that have agents installed.
+   This scope would then help you understand the overall coverage of
+   your organization's security tools.  For the more mathematically
+   inclined here is a quasi-mathematical way of looking at:
+
+   Capabilities = f(Action, Subject, Scope)
+
+
+
+
+Montville & Langlois    Expires January 20, 2019                [Page 4]
+
+Internet-Draft                  SACM TCL                       July 2018
+
+
+4.  IANA Considerations
+
+   TBD
+
+5.  Security Considerations
+
+   TBD
+
+6.  Acknowledgements
+
+   TBD
+
+7.  Change Log
+
+   TBD
+
+8.  Contributors
+
+9.  Informative References
+
+   [CISControls]
+              "CIS Controls", n.d..
+
+   [I-D.ietf-mile-xmpp-grid]
+              Cam-Winget, N., Appala, S., Pope, S., and P. Saint-Andre,
+              "Using XMPP for Security Information Exchange", draft-
+              ietf-mile-xmpp-grid-06 (work in progress), June 2018.
+
+Appendix A.  The Attic
+
+   TBD
+
+Authors' Addresses
+
+   Adam W. Montville
+   Center for Internet Security
+   31 Tech Valley Drive
+   East Greenbush, NY  12061
+   USA
+
+   Email: adam.w.montville@gmail.com
+
+
+
+
+
+
+
+
+
+
+Montville & Langlois    Expires January 20, 2019                [Page 5]
+
+Internet-Draft                  SACM TCL                       July 2018
+
+
+   Philippe Langlois
+   Center for Internet Security
+   31 Tech Valley Drive
+   East Greenbush, NY  12061
+   USA
+
+   Email: philippe.langlois@cisecurity.org
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Montville & Langlois    Expires January 20, 2019                [Page 6]
