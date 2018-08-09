@@ -44,6 +44,13 @@ informative:
   I-D.ietf-mile-xmpp-grid: xmppgrid
   CISControls:
     title: "CIS Controls"
+  RFC7090:
+  STIX:
+    title: "STIX"
+    target: https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=cti
+  ATTACK:
+    title: "ATT&K"
+    target: https://attack.mitre.org/wiki/Main_Page
 
 
 
@@ -58,9 +65,9 @@ WORKING GROUP: The source for this draft is maintained in GitHub.  Suggested cha
 
 # Introduction
 
-For the defenders supporting and protecting networks, the deluge of data, alerts, best practices, notices and regulations can overwhelm even the hardiest of us. Fortunately for the defenders the tools they use have evolved in maturity, functionality and interoperability, however, understanding the specific  capability of the tools and how they help you achieve certain regulations or best practices still presents a challenge. Does your vulnerability management platform, also count as your organization’s asset inventory? Does your Active Asset Inventory tool also help you create your list of active ports and services?  Does your implementation of opensource tools meet the same functional capabilities of an enterprise grade tool? What additional value does [insert new marketing buzzword] provide to protecting your organization?
+For the defenders supporting and protecting networks, the deluge of data, alerts, best practices, notices and regulations can overwhelm even the hardiest of us. Fortunately for the defenders the tools they use have evolved in maturity, functionality and interoperability. However, understanding the specific  capability of the tools and how they help you achieve certain regulations or best practices still presents a challenge. Does a vulnerability management platform also count as or contribute to an organization’s asset inventory? Does an Active Asset Inventory tool also help the enterprise create its list of active ports and services?  Does an organization's implementation of open source tools meet the same functional capabilities of a commercial tool (and vice versa)? What additional value does [insert new marketing buzzword] provide to protecting the organization?
 
-One way that we can attempt to address these types of questions is through the development of a standardized language to describe cybersecurity tooling capability. We have standardized languages for describing software vulnerability (CWE, CVE), standardized languages to describe platforms and software (CPE) and also some growing standardization for understanding attacker methodology and campaigns (STIX, ATT&CK).  While the task may seem insurmountable: there are so many tools that address problems in unique different way. However, if the focus is not on HOW the tool functions, but on WHAT the tools does, the scope starts to narrow down drastically. With this approach we could start to whittle down the large corpus of tooling descriptions and distill them into a more manageable classes of capabilities.
+One way to address these types of questions is through the development of a standardized language to describe security tooling capability. We have standardized languages for describing software weakness and vulnerability (CWE, CVE), standardized languages to describe platforms and software (CPE, SWID) and also some growing standardization for understanding attacker methodology and campaigns ({{RFC7090}}, {{STIX}}, {{ATTACK}}).  While the task of standardizing a language of tooling capabilities may seem insurmountable, we believe we can attach the problem by focusing on what the tools do rather than how they do it. With this approach we could start to whittle down the large corpus of tooling descriptions and distill them into a more manageable classes of capabilities.
 
 By having a standardized approach to describing capabilities we could theoretically make direct connections between security tooling, security requirements and risks.
 
@@ -94,9 +101,11 @@ Below is an example of how these action terms can be used:
 * Block from executing unapproved applications
 * Block from connecting unapproved connections.
 
-In these extremely simple examples, we’re looking at capabilities being described as the relationship between an Action (the what, in bold) and the Subject (to what, in orange).  The subject allows us to understand where the action is being applied and within which context. For example are we scanning the network for live assets, or are we scanning for known out-dated software? The problem then becomes, what ultimately describes the subject. This is where there is a significant gap in my opinion. Ideally a standardized language of system subjects would allow for the capturing of relationships between subjects (a Filesystem is on a system, a network consists of different systems, applications can be distributed across different systems).  The relationships would be key to understanding how specific capabilities tie back to different elements of the environment and how those protections roll up (or don’t) in the environment.
+In each of the above examples, there is an action and a subject. The subject allows us to understand where the action is being applied and within which context. For example are we scanning the network for live assets, or are we scanning for known out-dated software? The problem then becomes, what ultimately describes the subject - a subject could be an endpoint, an attribute on an endpoint, software installed on an endpoint, and so on.  Ideally a standardized language of system subjects would allow for the capturing of relationships between subjects (a Filesystem is on a system, a network consists of different systems, applications can be distributed across different systems).  The relationships would be key to understanding how specific capabilities tie back to different elements of the environment and how those protections roll up (or don’t) in the environment.
 
-However, in the imperfect world of technology I believe we need to introduce one additional piece, the “Scope”. As much as we’d like to say that our capability would be applied universally across our environment it may only be available to certain platforms, to systems that are domain joined, or to systems that have agents installed. This scope would then help you understand the overall coverage of your organization’s security tools.   For the more mathematically inclined here is a quasi-mathematical way of looking at:
+We can extend this to include one more piece of information: Scope. As much as we’d like to say that a capability could be applied universally across a given environment, the reality is that it may only be available to certain platforms. For example, a specific action may only be available on domain-joined systems in a Windows environment, or to systems with specific software installed. This scope would then help an operator understand the overall coverage of her organization’s security tools.   
+
+Another way of looking at this is that a security tooling capability is a function of an action-subject-scope tuple, or :
 
 Capabilities = f(Action, Subject, Scope)
 

@@ -299,7 +299,7 @@ ul.toc li {
 
   <meta name="dct.creator" content="Montville, A. and P. Langlois" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-mandl-sacm-tool-capability-language-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2018-7-19" />
+  <meta name="dct.issued" scheme="ISO8601" content="2018-8-09" />
   <meta name="dct.abstract" content="The MILE working group has adopted and continues work on " />
   <meta name="description" content="The MILE working group has adopted and continues work on " />
 
@@ -323,8 +323,8 @@ ul.toc li {
   <td class="right">CIS</td>
 </tr>
 <tr>
-  <td class="left">Expires: January 20, 2019</td>
-  <td class="right">July 19, 2018</td>
+  <td class="left">Expires: February 10, 2019</td>
+  <td class="right">August 09, 2018</td>
 </tr>
 
     	
@@ -345,7 +345,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on January 20, 2019.</p>
+<p>This Internet-Draft will expire on February 10, 2019.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
@@ -373,8 +373,8 @@ ul.toc li {
   </ul>
 
   <h1 id="rfc.section.1"><a href="#rfc.section.1">1.</a> <a href="#introduction" id="introduction">Introduction</a></h1>
-<p id="rfc.section.1.p.1">For the defenders supporting and protecting networks, the deluge of data, alerts, best practices, notices and regulations can overwhelm even the hardiest of us. Fortunately for the defenders the tools they use have evolved in maturity, functionality and interoperability, however, understanding the specific  capability of the tools and how they help you achieve certain regulations or best practices still presents a challenge. Does your vulnerability management platform, also count as your organization's asset inventory? Does your Active Asset Inventory tool also help you create your list of active ports and services?  Does your implementation of opensource tools meet the same functional capabilities of an enterprise grade tool? What additional value does [insert new marketing buzzword] provide to protecting your organization?</p>
-<p id="rfc.section.1.p.2">One way that we can attempt to address these types of questions is through the development of a standardized language to describe cybersecurity tooling capability. We have standardized languages for describing software vulnerability (CWE, CVE), standardized languages to describe platforms and software (CPE) and also some growing standardization for understanding attacker methodology and campaigns (STIX, ATT&amp;CK).  While the task may seem insurmountable: there are so many tools that address problems in unique different way. However, if the focus is not on HOW the tool functions, but on WHAT the tools does, the scope starts to narrow down drastically. With this approach we could start to whittle down the large corpus of tooling descriptions and distill them into a more manageable classes of capabilities.</p>
+<p id="rfc.section.1.p.1">For the defenders supporting and protecting networks, the deluge of data, alerts, best practices, notices and regulations can overwhelm even the hardiest of us. Fortunately for the defenders the tools they use have evolved in maturity, functionality and interoperability. However, understanding the specific  capability of the tools and how they help you achieve certain regulations or best practices still presents a challenge. Does a vulnerability management platform also count as or contribute to an organization's asset inventory? Does an Active Asset Inventory tool also help the enterprise create its list of active ports and services?  Does an organization's implementation of open source tools meet the same functional capabilities of a commercial tool (and vice versa)? What additional value does [insert new marketing buzzword] provide to protecting the organization?</p>
+<p id="rfc.section.1.p.2">One way to address these types of questions is through the development of a standardized language to describe security tooling capability. We have standardized languages for describing software weakness and vulnerability (CWE, CVE), standardized languages to describe platforms and software (CPE, SWID) and also some growing standardization for understanding attacker methodology and campaigns (<a href="#RFC7090">[RFC7090]</a>, <a href="#STIX">[STIX]</a>, <a href="#ATTACK">[ATTACK]</a>).  While the task of standardizing a language of tooling capabilities may seem insurmountable, we believe we can attach the problem by focusing on what the tools do rather than how they do it. With this approach we could start to whittle down the large corpus of tooling descriptions and distill them into a more manageable classes of capabilities.</p>
 <p id="rfc.section.1.p.3">By having a standardized approach to describing capabilities we could theoretically make direct connections between security tooling, security requirements and risks.</p>
 <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> <a href="#terms-and-definitions" id="terms-and-definitions">Terms and Definitions</a></h1>
 <p id="rfc.section.2.p.1">TBD</p>
@@ -407,9 +407,10 @@ ul.toc li {
   <li>Block from executing unapproved applications</li>
   <li>Block from connecting unapproved connections.</li>
 </ul>
-<p id="rfc.section.3.p.5">In these extremely simple examples, we're looking at capabilities being described as the relationship between an Action (the what, in bold) and the Subject (to what, in orange).  The subject allows us to understand where the action is being applied and within which context. For example are we scanning the network for live assets, or are we scanning for known out-dated software? The problem then becomes, what ultimately describes the subject. This is where there is a significant gap in my opinion. Ideally a standardized language of system subjects would allow for the capturing of relationships between subjects (a Filesystem is on a system, a network consists of different systems, applications can be distributed across different systems).  The relationships would be key to understanding how specific capabilities tie back to different elements of the environment and how those protections roll up (or don't) in the environment.</p>
-<p id="rfc.section.3.p.6">However, in the imperfect world of technology I believe we need to introduce one additional piece, the "Scope". As much as we'd like to say that our capability would be applied universally across our environment it may only be available to certain platforms, to systems that are domain joined, or to systems that have agents installed. This scope would then help you understand the overall coverage of your organization's security tools.   For the more mathematically inclined here is a quasi-mathematical way of looking at:</p>
-<p id="rfc.section.3.p.7">Capabilities = f(Action, Subject, Scope)</p>
+<p id="rfc.section.3.p.5">In each of the above examples, there is an action and a subject. The subject allows us to understand where the action is being applied and within which context. For example are we scanning the network for live assets, or are we scanning for known out-dated software? The problem then becomes, what ultimately describes the subject - a subject could be an endpoint, an attribute on an endpoint, software installed on an endpoint, and so on.  Ideally a standardized language of system subjects would allow for the capturing of relationships between subjects (a Filesystem is on a system, a network consists of different systems, applications can be distributed across different systems).  The relationships would be key to understanding how specific capabilities tie back to different elements of the environment and how those protections roll up (or don't) in the environment.</p>
+<p id="rfc.section.3.p.6">We can extend this to include one more piece of information: Scope. As much as we'd like to say that a capability could be applied universally across a given environment, the reality is that it may only be available to certain platforms. For example, a specific action may only be available on domain-joined systems in a Windows environment, or to systems with specific software installed. This scope would then help an operator understand the overall coverage of her organization's security tools.</p>
+<p id="rfc.section.3.p.7">Another way of looking at this is that a security tooling capability is a function of an action-subject-scope tuple, or :</p>
+<p id="rfc.section.3.p.8">Capabilities = f(Action, Subject, Scope)</p>
 <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a></h1>
 <p id="rfc.section.4.p.1">TBD</p>
 <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a></h1>
@@ -422,6 +423,7 @@ ul.toc li {
 <h1 id="rfc.references"><a href="#rfc.references">9.</a> Informative References</h1>
 <table>
   <tbody>
+    <tr><td class="reference"><b id="ATTACK">[ATTACK]</b></td><td class="top"><a href="https://attack.mitre.org/wiki/Main_Page">ATT&amp;K</a>", n.d..</td>, "</tr>
     <tr><td class="reference"><b id="CISControls">[CISControls]</b></td><td class="top"><a>CIS Controls</a>", n.d..</td>, "</tr>
     <tr>
       <td class="reference">
@@ -429,6 +431,13 @@ ul.toc li {
       </td>
       <td class="top"><a>Cam-Winget, N.</a>, <a>Appala, S.</a>, <a>Pope, S.</a> and <a>P. Saint-Andre</a>, <a href="http://tools.ietf.org/html/draft-ietf-mile-xmpp-grid-06">Using XMPP for Security Information Exchange</a>", Internet-Draft draft-ietf-mile-xmpp-grid-06, June 2018.</td>
     </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC7090">[RFC7090]</b>
+      </td>
+      <td class="top"><a>Schulzrinne, H.</a>, <a>Tschofenig, H.</a>, <a>Holmberg, C.</a> and <a>M. Patel</a>, <a href="http://tools.ietf.org/html/rfc7090">Public Safety Answering Point (PSAP) Callback</a>", RFC 7090, DOI 10.17487/RFC7090, April 2014.</td>
+    </tr>
+    <tr><td class="reference"><b id="STIX">[STIX]</b></td><td class="top"><a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=cti">STIX</a>", n.d..</td>, "</tr>
   </tbody>
 </table>
 <h1 id="rfc.appendix.A"><a href="#rfc.appendix.A">Appendix A.</a> <a href="#the-attic" id="the-attic">The Attic</a></h1>

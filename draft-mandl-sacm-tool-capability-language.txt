@@ -5,7 +5,7 @@
 SACM Working Group                                          A. Montville
 Internet-Draft                                               P. Langlois
 Intended status: Informational                                       CIS
-Expires: January 20, 2019                                  July 19, 2018
+Expires: February 10, 2019                               August 09, 2018
 
 
   Security Automation and Continuous Monitoring (SACM) Tool Capability
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 20, 2019.
+   This Internet-Draft will expire on February 10, 2019.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Montville & Langlois    Expires January 20, 2019                [Page 1]
+Montville & Langlois    Expires February 10, 2019               [Page 1]
 
-Internet-Draft                  SACM TCL                       July 2018
+Internet-Draft                  SACM TCL                     August 2018
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -88,38 +88,37 @@ Table of Contents
    data, alerts, best practices, notices and regulations can overwhelm
    even the hardiest of us.  Fortunately for the defenders the tools
    they use have evolved in maturity, functionality and
-   interoperability, however, understanding the specific capability of
+   interoperability.  However, understanding the specific capability of
    the tools and how they help you achieve certain regulations or best
-   practices still presents a challenge.  Does your vulnerability
-   management platform, also count as your organization's asset
-   inventory?  Does your Active Asset Inventory tool also help you
-   create your list of active ports and services?  Does your
-   implementation of opensource tools meet the same functional
-   capabilities of an enterprise grade tool?  What additional value does
-   [insert new marketing buzzword] provide to protecting your
-   organization?
+   practices still presents a challenge.  Does a vulnerability
+   management platform also count as or contribute to an organization's
+   asset inventory?  Does an Active Asset Inventory tool also help the
+   enterprise create its list of active ports and services?  Does an
+   organization's implementation of open source tools meet the same
+   functional capabilities of a commercial tool (and vice versa)?  What
+   additional value does [insert new marketing buzzword] provide to
+   protecting the organization?
 
-   One way that we can attempt to address these types of questions is
-   through the development of a standardized language to describe
-   cybersecurity tooling capability.  We have standardized languages for
-   describing software vulnerability (CWE, CVE), standardized languages
-   to describe platforms and software (CPE) and also some growing
+   One way to address these types of questions is through the
+   development of a standardized language to describe security tooling
+   capability.  We have standardized languages for describing software
+   weakness and vulnerability (CWE, CVE), standardized languages to
+   describe platforms and software (CPE, SWID) and also some growing
    standardization for understanding attacker methodology and campaigns
-   (STIX, ATT&CK).  While the task may seem insurmountable: there are so
+   ([RFC7090], [STIX], [ATTACK]).  While the task of standardizing a
 
 
 
-Montville & Langlois    Expires January 20, 2019                [Page 2]
+Montville & Langlois    Expires February 10, 2019               [Page 2]
 
-Internet-Draft                  SACM TCL                       July 2018
+Internet-Draft                  SACM TCL                     August 2018
 
 
-   many tools that address problems in unique different way.  However,
-   if the focus is not on HOW the tool functions, but on WHAT the tools
-   does, the scope starts to narrow down drastically.  With this
-   approach we could start to whittle down the large corpus of tooling
-   descriptions and distill them into a more manageable classes of
-   capabilities.
+   language of tooling capabilities may seem insurmountable, we believe
+   we can attach the problem by focusing on what the tools do rather
+   than how they do it.  With this approach we could start to whittle
+   down the large corpus of tooling descriptions and distill them into a
+   more manageable classes of capabilities.
 
    By having a standardized approach to describing capabilities we could
    theoretically make direct connections between security tooling,
@@ -162,15 +161,14 @@ Internet-Draft                  SACM TCL                       July 2018
 
    o  Verify: Demonstrate the accuracy of assumptions
 
-
-
-
-Montville & Langlois    Expires January 20, 2019                [Page 3]
-
-Internet-Draft                  SACM TCL                       July 2018
-
-
    o  Log: make a recording of specific events
+
+
+
+Montville & Langlois    Expires February 10, 2019               [Page 3]
+
+Internet-Draft                  SACM TCL                     August 2018
+
 
    o  Set: Turn on a setting or add a value to the system
 
@@ -191,14 +189,13 @@ Internet-Draft                  SACM TCL                       July 2018
 
    o  Block from connecting unapproved connections.
 
-   In these extremely simple examples, we're looking at capabilities
-   being described as the relationship between an Action (the what, in
-   bold) and the Subject (to what, in orange).  The subject allows us to
-   understand where the action is being applied and within which
-   context.  For example are we scanning the network for live assets, or
-   are we scanning for known out-dated software?  The problem then
-   becomes, what ultimately describes the subject.  This is where there
-   is a significant gap in my opinion.  Ideally a standardized language
+   In each of the above examples, there is an action and a subject.  The
+   subject allows us to understand where the action is being applied and
+   within which context.  For example are we scanning the network for
+   live assets, or are we scanning for known out-dated software?  The
+   problem then becomes, what ultimately describes the subject - a
+   subject could be an endpoint, an attribute on an endpoint, software
+   installed on an endpoint, and so on.  Ideally a standardized language
    of system subjects would allow for the capturing of relationships
    between subjects (a Filesystem is on a system, a network consists of
    different systems, applications can be distributed across different
@@ -207,23 +204,26 @@ Internet-Draft                  SACM TCL                       July 2018
    environment and how those protections roll up (or don't) in the
    environment.
 
-   However, in the imperfect world of technology I believe we need to
-   introduce one additional piece, the "Scope".  As much as we'd like to
-   say that our capability would be applied universally across our
-   environment it may only be available to certain platforms, to systems
-   that are domain joined, or to systems that have agents installed.
-   This scope would then help you understand the overall coverage of
-   your organization's security tools.  For the more mathematically
-   inclined here is a quasi-mathematical way of looking at:
+   We can extend this to include one more piece of information: Scope.
+   As much as we'd like to say that a capability could be applied
+   universally across a given environment, the reality is that it may
+   only be available to certain platforms.  For example, a specific
+   action may only be available on domain-joined systems in a Windows
+   environment, or to systems with specific software installed.  This
+   scope would then help an operator understand the overall coverage of
+   her organization's security tools.
+
+   Another way of looking at this is that a security tooling capability
+   is a function of an action-subject-scope tuple, or :
 
    Capabilities = f(Action, Subject, Scope)
 
 
 
 
-Montville & Langlois    Expires January 20, 2019                [Page 4]
+Montville & Langlois    Expires February 10, 2019               [Page 4]
 
-Internet-Draft                  SACM TCL                       July 2018
+Internet-Draft                  SACM TCL                     August 2018
 
 
 4.  IANA Considerations
@@ -246,6 +246,8 @@ Internet-Draft                  SACM TCL                       July 2018
 
 9.  Informative References
 
+   [ATTACK]   "ATT&K", n.d., <https://attack.mitre.org/wiki/Main_Page>.
+
    [CISControls]
               "CIS Controls", n.d..
 
@@ -254,11 +256,31 @@ Internet-Draft                  SACM TCL                       July 2018
               "Using XMPP for Security Information Exchange", draft-
               ietf-mile-xmpp-grid-06 (work in progress), June 2018.
 
+   [RFC7090]  Schulzrinne, H., Tschofenig, H., Holmberg, C., and M.
+              Patel, "Public Safety Answering Point (PSAP) Callback",
+              RFC 7090, DOI 10.17487/RFC7090, April 2014,
+              <https://www.rfc-editor.org/info/rfc7090>.
+
+   [STIX]     "STIX", n.d., <https://www.oasis-open.org/committees/
+              tc_home.php?wg_abbrev=cti>.
+
 Appendix A.  The Attic
 
    TBD
 
 Authors' Addresses
+
+
+
+
+
+
+
+
+Montville & Langlois    Expires February 10, 2019               [Page 5]
+
+Internet-Draft                  SACM TCL                     August 2018
+
 
    Adam W. Montville
    Center for Internet Security
@@ -267,19 +289,6 @@ Authors' Addresses
    USA
 
    Email: adam.w.montville@gmail.com
-
-
-
-
-
-
-
-
-
-
-Montville & Langlois    Expires January 20, 2019                [Page 5]
-
-Internet-Draft                  SACM TCL                       July 2018
 
 
    Philippe Langlois
@@ -324,13 +333,4 @@ Internet-Draft                  SACM TCL                       July 2018
 
 
 
-
-
-
-
-
-
-
-
-
-Montville & Langlois    Expires January 20, 2019                [Page 6]
+Montville & Langlois    Expires February 10, 2019               [Page 6]
