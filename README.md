@@ -2,7 +2,7 @@
 
 This is the working area for an individual draft, "SACM Tooling Capability Language" submitted to the SACM Working Group.
 
-* [Editor's Copy](https://adammontville.github.io/draft-mandl-sacm-tool-capability-language/#go.draft-mandl-sacm-tool-capability-language.html)
+* [Editor's Copy]() -- NOT BUILDING, view HTML instead.
 * Working Group Draft -- Not Yet Adopted
 * Compare Editor's Copy to Working Group Draft - Not Yet Adopted
 
